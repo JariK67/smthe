@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import tikape.runko.domain.Annos;
+import tikape.runko.domain.RaakaAine;
 
 public class AnnosDao implements Dao<Annos, Integer> {
 
@@ -67,9 +68,23 @@ public class AnnosDao implements Dao<Annos, Integer> {
         return annokset;
     }
 
+    public void insert(Annos a) throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement(
+                    "INSERT INTO Annos VALUES (?,?);");
+        stmt.setObject(1, a.getId());
+        stmt.setObject(2, a.getNimi());
+        stmt.executeUpdate();        
+        stmt.close();
+        connection.close();
+    }
+
     @Override
     public void delete(Integer key) throws SQLException {
-        // ei toteutettu
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM Annos WHERE id=?");
+        stmt.setObject(1, key);
+        ResultSet rs = stmt.executeQuery();
     }
 
 }

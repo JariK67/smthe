@@ -11,9 +11,10 @@
 
         <ul>
             <li th:each="annos: ${annokset}">
-                <a th:href="${'/annos/' + annos.id}"><span th:text="${annos.nimi}">Annos nimi</span></a>
+                <a th:href="${'/annos/nayta/' + annos.id}"><span th:text="${annos.nimi}">Annos nimi</span></a>
             </li>
         </ul>
         <a th:href="${'/annos/luo'}">Luo uusi smoothie</a>
+        <a th:href="${'/raakaaineet'}">Tarkastele ja lisää aineksia</a>
     </body>
 </html>

@@ -90,6 +90,17 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
         return raakaAineet;
     }
 
+    public void insert(RaakaAine a) throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement(
+                    "INSERT INTO RaakaAine VALUES (?,?);");
+        stmt.setObject(1, a.getId());
+        stmt.setObject(2, a.getNimi());
+        stmt.executeUpdate();        
+        stmt.close();
+        connection.close();
+    }
+
     @Override
     public void delete(Integer key) throws SQLException {
         // ei toteutettu
