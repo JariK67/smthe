@@ -1,0 +1,44 @@
+drop table Annos;
+create table Annos (
+       id integer primary key,
+       nimi varchar(255)
+);
+insert into Annos values
+(       1,'Aurinkolasit'	 );
+insert into Annos values
+(       2,'Mustikkaplorays'	 );
+drop table RaakaAine;
+create table RaakaAine (
+       id integer primary key,
+       nimi varchar(255)
+);
+insert into RaakaAine values
+(       1,'Banaani'	 );
+insert into RaakaAine values
+(       2,'Appelsiini'	 );
+insert into RaakaAine values
+(       3,'Maito'	 );
+insert into RaakaAine values
+(       4,'Mustikka'	 );
+drop table AnnosRaakaAine;
+create table AnnosRaakaAine (
+       raaka_aine_id integer,
+       annos_id integer,
+       jarjestys integer,
+       maara varchar(10),
+       ohje varchar(255),
+       foreign key (raaka_aine_id) references RaakaAine(id),
+       foreign key (annos_id) references Annos(id)
+);
+insert into AnnosRaakaAine values
+(       1, 1, 1, '3 kpl', '' );
+insert into AnnosRaakaAine values
+(       2, 1, 2, '2 kpl', '' );
+insert into AnnosRaakaAine values
+(       3, 1, 3, '2 dl', '' );
+insert into AnnosRaakaAine values
+(       1, 2, 1, '3 kpl', '' );
+insert into AnnosRaakaAine values
+(       4, 2, 2, '2 kpl', '' );
+insert into AnnosRaakaAine values
+(       3, 2, 3, '2 dl', '' );

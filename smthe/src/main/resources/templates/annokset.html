@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Smoothielista</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Smoothielista</h1>
+
+        <ul>
+            <li th:each="annos: ${annokset}">
+                <a th:href="${'/annos/' + annos.id}"><span th:text="${annos.nimi}">Annos nimi</span></a>
+            </li>
+        </ul>
+        <a th:href="${'/annos/luo'}">Luo uusi smoothie</a>
+    </body>
+</html>
