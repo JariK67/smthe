@@ -39,7 +39,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
         String maara = rs.getString("maara");
         String ohje = rs.getString("ohje");
 
-        AnnosRaakaAine o = new AnnosRaakaAine(raakaaine_id,annos_id, jarjestys,maara,ohje);
+        AnnosRaakaAine o = new AnnosRaakaAine(raakaaine_id, annos_id, jarjestys, maara, ohje);
 
         rs.close();
         stmt.close();

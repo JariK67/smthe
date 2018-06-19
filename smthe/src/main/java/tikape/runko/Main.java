@@ -20,6 +20,7 @@ public class Main {
 
         AnnosDao AnnosDao = new AnnosDao(database);
         RaakaAineDao RaakaAineDao = new RaakaAineDao(database);
+        AnnosRaakaAineDao AnnosRaakaAineDao = new AnnosRaakaAineDao(database);
 
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -66,15 +67,14 @@ public class Main {
             HashMap map = new HashMap<>();
 //            RaakaAine raakaaine = new RaakaAineDao.findOne(Integer.parseInt(req.queryParams("raakaaine_id")));
 //            Annos annos = new AnnosDao.findOne(Integer.parseInt(req.queryParams("annos_id")));
-            System.out.println("raakaaineet * /raakaaine/lisaa");
-            AnnosRaakaAine annosraakaaine = new AnnosRaakaAine(
-                req.queryParams("raakaaine_id"),
-                req.queryParams("annos_id"),
-                req.queryParams("nimi"),
+            System.out.println("raakaaineet * /raakaaine/lisaa"); 
+            AnnosRaakaAine ara = new AnnosRaakaAine(
+                Integer.parseInt(req.queryParams("raakaaine_id")),
+                Integer.parseInt(req.queryParams("annos_id")),
                 req.queryParams("jarjestys"),
                 req.queryParams("maara"),
                 req.queryParams("ohje"));
-            AnnosRaakaAineDao.insert(annosraakaaine);
+            AnnosRaakaAineDao.insert(ara);
             res.redirect("/raakaaineet");
             return new ModelAndView(map, "raakaaineet");
         }, new ThymeleafTemplateEngine());
